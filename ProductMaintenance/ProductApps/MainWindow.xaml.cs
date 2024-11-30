@@ -13,15 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace ProductApps
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        Product cProduct;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -31,22 +27,34 @@ namespace ProductApps
         {
             try
             {
-                cProduct = new Product(Convert.ToDecimal(priceTextBox.Text), Convert.ToInt16(quantityTextBox.Text));
-                cProduct.calTotalPayment();
-                totalPaymentTextBlock.Text = Convert.ToString(cProduct.TotalPayment);
+                // Read the input values
+                decimal price = Convert.ToDecimal(priceTextBox.Text);
+                int quantity = Convert.ToInt32(quantityTextBox.Text);
+
+                // Calculate the total payment
+                decimal totalPayment = price * quantity;
+
+                // Add a delivery charge of $25
+                decimal deliveryCharge = 25.00m;
+                decimal totalCharge = totalPayment + deliveryCharge;
+
+                // Display the total payment and total charge
+                totalPaymentTextBlock.Text = totalPayment.ToString("C");
+                totalChargeTextBox.Text = totalCharge.ToString("C");
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-                MessageBox.Show("Enter data again", "Data Entry Error");
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
         private void clearButton_Click(object sender, RoutedEventArgs e)
         {
-            productTextBox.Text = "";
-            priceTextBox.Text = "";
-            quantityTextBox.Text = "";
-            totalPaymentTextBlock.Text = "";
+            // Clear all fields
+            productTextBox.Clear();
+            priceTextBox.Clear();
+            quantityTextBox.Clear();
+
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
