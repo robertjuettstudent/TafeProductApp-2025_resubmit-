@@ -23,40 +23,59 @@ namespace ProductApps
             InitializeComponent();
         }
 
+        // Calculate button click event handler
         private void calculateButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Read the input values
+                // Parse values from the textboxes
                 decimal price = Convert.ToDecimal(priceTextBox.Text);
                 int quantity = Convert.ToInt32(quantityTextBox.Text);
 
-                // Calculate the total payment
+                // Calculate total payment
                 decimal totalPayment = price * quantity;
 
-                // Add a delivery charge of $25
+                // Display the total payment in the TotalPayment TextBlock
+                totalPaymentTextBlock.Text = totalPayment.ToString("0.00");
+
+                // Add $25 delivery charge
                 decimal deliveryCharge = 25.00m;
                 decimal totalCharge = totalPayment + deliveryCharge;
 
-                // Display the total payment and total charge
-                totalPaymentTextBlock.Text = totalPayment.ToString("C");
-                totalChargeTextBox.Text = totalCharge.ToString("C");
+                // Display the total charge after delivery charge
+                totalChargeTextBlock.Text = totalCharge.ToString("0.00");
+
+                // Add $5 wrapping charge
+                decimal wrapCharge = 5.00m;
+                decimal totalChargeWithWrap = totalCharge + wrapCharge;
+
+                // Display the total charge after the wrap charge
+                totalChargeWrapBlock.Text = totalChargeWithWrap.ToString("0.00");
+
+
+
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error calculating total: " + ex.Message);
             }
         }
 
+        // Clear button click event handler
         private void clearButton_Click(object sender, RoutedEventArgs e)
         {
-            // Clear all fields
+            // Clear all textboxes and labels
             productTextBox.Clear();
             priceTextBox.Clear();
             quantityTextBox.Clear();
+            totalPaymentTextBlock.Text = string.Empty;
+            totalChargeTextBlock.Text = string.Empty;
+            totalChargeWrapBlock.Text = string.Empty;
 
         }
 
+        // Close button click event handler
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

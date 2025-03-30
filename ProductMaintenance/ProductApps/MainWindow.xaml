@@ -8,10 +8,13 @@
     <Label Content="Quantity:" HorizontalAlignment="Left" Height="30" Margin="48,113,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="0.371,0.498"/>
     <Label Content="Total Payment $:" HorizontalAlignment="Left" Height="30" Margin="46,160,0,0" VerticalAlignment="Top" Width="96"/>
 
-    <!-- Added Total Charge Label -->
-    <Label Content="Total Charge after adding &#xA;the delivery charge ($25)" HorizontalAlignment="Left" Height="30" Margin="46,210,0,0" VerticalAlignment="Top" Width="250"/>
+        <!-- New Label and TextBlock for Total Charge -->
+        <Label Content="Total Charge after adding &#xA;the delivery charge ($25)" HorizontalAlignment="Left" Height="45" Margin="48,197,0,0" VerticalAlignment="Top" Width="250"/>
+        <TextBlock Name="totalChargeTextBlock" HorizontalAlignment="Left" Height="23" Margin="222,209,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="74"/>
+        <TextBlock x:Name="totalChargeWrapBlock" HorizontalAlignment="Left" Height="23" Margin="222,251,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="74"/>
+        <Label Content="Total Charge after adding &#xA;the wrap charge ($5)" HorizontalAlignment="Left" Height="45" Margin="48,244,0,0" VerticalAlignment="Top" Width="154"/>
 
-    <!-- Added TextBlock for Total Charge -->
+        <!-- Added TextBlock for Total Charge -->
     <TextBlock Name="totalChargeTextBox" HorizontalAlignment="Left" Height="23" Margin="250,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
 
     <TextBlock Name="totalPaymentTextBlock" HorizontalAlignment="Left" Height="23" Margin="164,167,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="75"/>
